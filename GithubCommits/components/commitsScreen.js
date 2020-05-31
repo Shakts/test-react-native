@@ -46,6 +46,7 @@ class CommitsScreen extends React.Component {
 
     this.state = {
       repoFound:false,
+      currentPage: 1,
       commitData:[]
     }
 
@@ -53,7 +54,8 @@ class CommitsScreen extends React.Component {
   }
 
   fetchData() {
-    fetch('https://api.github.com/repos/' + this.props.route.params.searchQuery + '/commits?page=1&per_page=10')
+    fetch('https://api.github.com/repos/' + this.props.route.params.searchQuery + '/commits?page=' +
+      this.state.currentPage + '&per_page=5')
       .then(response => {
         return response.json();
       })
@@ -69,7 +71,8 @@ class CommitsScreen extends React.Component {
 
         this.setState({
           repoFound:true,
-          commitData: fetchedCommits
+          currentPage: this.state.currentPage + 1,
+          commitData: this.state.commitData.concat(fetchedCommits)
         })
       })
       .catch(function(error) {
@@ -77,20 +80,25 @@ class CommitsScreen extends React.Component {
       });;
   }
 
+  componentDidMount() {
+    this.fetchData();
+  }
+
   render() {
     let displayedView;
-    this.fetchData();
 
     if (this.state.repoFound) {
       displayedView = (
-        <>
+        <View >
           <Text>Commits on : {this.props.route.params.searchQuery}</Text>
           <FlatList
             data={this.state.commitData}
             renderItem={({item}) => <Commit commitItem={item}/>}
-            keyExtractor={item => item.key}
+            keyExtractor={item => item.id}
+            onEndReached={this.fetchData}
+            onEndReachedThreshold={0}
             />
-        </>
+        </View>
       );
     }
     else {
@@ -108,5 +116,8 @@ class CommitsScreen extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+});
 
 export default CommitsScreen;

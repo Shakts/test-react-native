@@ -17,6 +17,9 @@ class Commit extends React.Component {
 const styles = StyleSheet.create({
   commitItem: {
     padding: 16,
+    margin: 16,
+    backgroundColor: '#ff9999',
+    borderRadius: 10
   },
   avatarImage: {
     width: 100,
