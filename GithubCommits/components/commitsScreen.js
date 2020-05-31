@@ -45,19 +45,48 @@ class CommitsScreen extends React.Component {
     super();
 
     this.state = {
-      repoFound:true
+      repoFound:false,
+      commitData:[]
     }
+
+    this.fetchData = this.fetchData.bind(this);
+  }
+
+  fetchData() {
+    fetch('https://api.github.com/repos/' + this.props.route.params.searchQuery + '/commits?page=1&per_page=10')
+      .then(response => {
+        return response.json();
+      })
+      .then(jsonResponse => {
+        console.log(jsonResponse[0]);
+        let fetchedCommits = jsonResponse.map(currentCommit => ({
+          id: currentCommit.node_id,
+          avatarUrl: currentCommit.author.avatar_url,
+          username: currentCommit.author.login,
+          commitMessage: currentCommit.commit.message,
+          commitDate: currentCommit.commit.author.date
+        }));
+
+        this.setState({
+          repoFound:true,
+          commitData: fetchedCommits
+        })
+      })
+      .catch(function(error) {
+        throw error;
+      });;
   }
 
   render() {
     let displayedView;
+    this.fetchData();
 
     if (this.state.repoFound) {
       displayedView = (
         <>
-          <Text>Commits for ...</Text>
+          <Text>Commits on : {this.props.route.params.searchQuery}</Text>
           <FlatList
-            data={dummyData}
+            data={this.state.commitData}
             renderItem={({item}) => <Commit commitItem={item}/>}
             keyExtractor={item => item.key}
             />

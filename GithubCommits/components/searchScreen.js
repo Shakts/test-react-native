@@ -21,7 +21,7 @@ class SearchScreen extends React.Component {
 
   findRepo() {
     // ToDo : Pass repo name to commitsScreen
-    this.props.navigation.navigate('Commits');
+    this.props.navigation.navigate('Commits', {searchQuery: this.state.repoName});
   }
 
   render() {
