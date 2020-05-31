@@ -19,6 +19,7 @@ class MainScreen extends React.Component {
 
   submitUsername() {
     //ToDo : Perfom input validation, then load password form page
+    this.props.navigation.navigate('Password');
   }
 
   render() {

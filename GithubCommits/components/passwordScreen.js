@@ -20,6 +20,7 @@ class PasswordScreen extends React.Component {
 
   submitPassword() {
     //ToDo : perform input validation, then load search page
+    this.props.navigation.navigate('Search');
   }
 
   render() {

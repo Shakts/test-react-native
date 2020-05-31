@@ -6,6 +6,7 @@
  * @flow strict-local
  */
 
+import 'react-native-gesture-handler';
 import React from 'react';
 import {
   SafeAreaView,
@@ -24,18 +25,31 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
 import MainScreen from './components/MainScreen';
 import PasswordScreen from './components/PasswordScreen';
 import SearchScreen from './components/SearchScreen';
 import CommitsScreen from './components/CommitsScreen';
 
+const Stack = createStackNavigator();
+
 class App extends React.Component {
   render() {
     return (
-      // <MainScreen/>
-      // <PasswordScreen />
-      // <SearchScreen />
-      <CommitsScreen />
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Login" component={MainScreen} />
+          <Stack.Screen name="Password" component={PasswordScreen} />
+          <Stack.Screen name="Search" component={SearchScreen} />
+          <Stack.Screen name="Commits" component={CommitsScreen} />
+        </Stack.Navigator>
+        {/* <MainScreen/>
+        <PasswordScreen />
+        <SearchScreen />
+        <CommitsScreen /> */}
+      </NavigationContainer>
     );
   }
 };
