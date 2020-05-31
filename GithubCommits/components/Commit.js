@@ -5,7 +5,7 @@ class Commit extends React.Component {
   render() {
     return(
       <View style={styles.commitItem}>
-        <Image source={{uri: + this.props.commitItem.avatarUrl}}/>
+        <Image style={styles.avatarImage} source={{uri: this.props.commitItem.avatarUrl}}/>
         <Text>{this.props.commitItem.username}</Text>
         <Text>{this.props.commitItem.commitMessage}</Text>
         <Text>{this.props.commitItem.commitDate}</Text>
@@ -17,7 +17,11 @@ class Commit extends React.Component {
 const styles = StyleSheet.create({
   commitItem: {
     padding: 16,
-  },  
+  },
+  avatarImage: {
+    width: 100,
+    height: 100
+  }
 });
 
 export default Commit;
