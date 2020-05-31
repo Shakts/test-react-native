@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, StyleSheet, TextInput, Button, FlatList} from 'react-native';
+import {Text, View, StyleSheet, ActivityIndicator, Button, FlatList} from 'react-native';
 import Commit from './Commit';
 
 class CommitsScreen extends React.Component {
@@ -8,10 +8,10 @@ class CommitsScreen extends React.Component {
     super();
 
     this.state = {
-      repoFound:false,
+      repoFound: false,
       currentPage: 1,
-      commitData:[],
-      
+      commitData: [],
+      isLoading: false
     }
 
     this.fetchData = this.fetchData.bind(this);
@@ -19,6 +19,13 @@ class CommitsScreen extends React.Component {
   }
 
   fetchData() {
+    this.setState({
+      repoFound: this.state.repoFound,
+      currentPage: this.state.currentPage,
+      commitData: this.state.commitData,
+      isLoading: true
+    })
+
     fetch('https://api.github.com/repos/' + this.props.route.params.searchQuery + '/commits?page=' +
       this.state.currentPage + '&per_page=5')
       .then(response => {
@@ -36,7 +43,8 @@ class CommitsScreen extends React.Component {
         this.setState({
           repoFound:true,
           currentPage: this.state.currentPage + 1,
-          commitData: this.state.commitData.concat(fetchedCommits)
+          commitData: this.state.commitData.concat(fetchedCommits),
+          isLoading: false
         })
       })
       .catch(function(error) {
@@ -56,6 +64,14 @@ class CommitsScreen extends React.Component {
     this.props.navigation.navigate('Login');
   }
 
+  renderFooter() {
+    return (
+      <View style={styles.loadingIndicator}>
+        <ActivityIndicator size="large"/>
+      </View>
+    );
+  }
+
   render() {
     let displayedView;
 
@@ -69,6 +85,7 @@ class CommitsScreen extends React.Component {
             keyExtractor={item => item.id}
             onEndReached={this.fetchData}
             onEndReachedThreshold={0}
+            ListFooterComponent={this.renderFooter}
             />
         </View>
       );
@@ -90,6 +107,10 @@ class CommitsScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  loadingIndicator : {
+    marginTop: 10,
+    alignItems: "center"
+  }
 });
 
 export default CommitsScreen;
