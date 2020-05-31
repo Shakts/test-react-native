@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, StyleSheet, TextInput, Button} from 'react-native';
+import {Text, View, StyleSheet, TextInput, Button, Alert} from 'react-native';
 
 class PasswordScreen extends React.Component {
   
@@ -19,8 +19,12 @@ class PasswordScreen extends React.Component {
   }
 
   submitPassword() {
-    //ToDo : perform input validation, then load search page
-    this.props.navigation.navigate('Search');
+    if (!this.state.passWord) {
+      Alert.alert('', 'Password must not be empty', [{ text: 'OK', onPress: () => console.log('OK Pressed') }]);
+    }
+    else {
+      this.props.navigation.navigate('Search');
+    }
   }
 
   render() {

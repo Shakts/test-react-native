@@ -55,7 +55,6 @@ class SearchScreen extends React.Component {
       <View style={stylesheet.page}>
         <Text style={stylesheet.pageTitle}>Enter a repository name</Text>
         <TextInput defaultValue={this.state.repoName} onChangeText={text => this.inputRepoName(text)}></TextInput>
-        <Text style={stylesheet.pageTitle}>{this.state.repoName}</Text>
         <Button title="Find" onPress={this.findRepo}></Button>
       </View>
     );
