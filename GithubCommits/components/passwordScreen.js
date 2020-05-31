@@ -14,8 +14,8 @@ class PasswordScreen extends React.Component {
     this.submitPassword = this.submitPassword.bind(this);
   }
 
-  inputPassword(e) {
-    this.setState({passWord: e.target.value});
+  inputPassword(textInput) {
+    this.setState({passWord: textInput});
   }
 
   submitPassword() {
@@ -29,7 +29,7 @@ class PasswordScreen extends React.Component {
         <View style = {styles.emptyView}></View>
         <View style = {styles.loginForm}>
           <Text style={styles.formText}>Login</Text>
-          <TextInput placeholder="Password" style={styles.usernameForm} onChange={this.inputPassword} secureTextEntry={true}></TextInput>
+          <TextInput placeholder="Password" style={styles.usernameForm} onChangeText={text => this.inputPassword(text)} secureTextEntry={true}></TextInput>
           <Button title="submit" style={styles.submitButton} onPress={this.submitPassword}/>
         </View>
         <View style = {styles.emptyView}></View>

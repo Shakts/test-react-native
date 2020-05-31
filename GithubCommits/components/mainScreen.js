@@ -13,8 +13,8 @@ class MainScreen extends React.Component {
     this.inputUsername = this.inputUsername.bind(this);
   }
 
-  inputUsername(e) {
-    this.setState({userName: e.target.value});
+  inputUsername(TextInput) {
+    this.setState({userName: TextInput});
   }
 
   submitUsername() {
@@ -28,7 +28,7 @@ class MainScreen extends React.Component {
         <View style = {styles.emptyView}></View>
         <View style = {styles.loginForm}>
           <Text style={styles.formText}>Login</Text>
-          <TextInput placeholder="Username" style={styles.usernameForm} onChange={this.inputUsername}></TextInput>
+          <TextInput placeholder="Username" style={styles.usernameForm} onChangeText={text => this.inputUsername(text)}></TextInput>
           <Button title="submit" style={styles.submitButton} onPress={this.submitUsername}/>
         </View>
         <View style = {styles.emptyView}></View>
