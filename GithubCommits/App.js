@@ -34,8 +34,8 @@ class App extends React.Component {
     return (
       // <MainScreen/>
       // <PasswordScreen />
-      <SearchScreen />
-      // <CommitsScreen />
+      // <SearchScreen />
+      <CommitsScreen />
     );
   }
 };
