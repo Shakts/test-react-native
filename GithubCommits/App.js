@@ -26,12 +26,16 @@ import {
 
 import MainScreen from './components/mainScreen';
 import PasswordScreen from './components/passwordScreen';
+import SearchScreen from './components/searchScreen';
+import CommitsScreen from './components/commitsScreen';
 
 class App extends React.Component {
   render() {
     return (
       // <MainScreen/>
-      <PasswordScreen />
+      // <PasswordScreen />
+      <SearchScreen />
+      // <CommitsScreen />
     );
   }
 };
