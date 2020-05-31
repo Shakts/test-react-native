@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, StyleSheet, ActivityIndicator, Button, FlatList} from 'react-native';
+import {Text, View, StyleSheet, ActivityIndicator, Button, FlatList, Alert} from 'react-native';
 import Commit from './Commit';
 
 class CommitsScreen extends React.Component {
@@ -61,7 +61,13 @@ class CommitsScreen extends React.Component {
   }
 
   logout() {
-    this.props.navigation.navigate('Login');
+    Alert.alert('', 
+      'Are you sure you want to log out?', 
+      [{ 
+        text: 'No', onPress: () => console.log("Cancel Pressed")
+      }, {
+        text: 'Yes', onPress: () => this.props.navigation.navigate('Login')
+      }]);
   }
 
   renderFooter() {
@@ -92,9 +98,9 @@ class CommitsScreen extends React.Component {
     }
     else {
       displayedView = (
-        <>
-          <Text>Repo not found</Text>
-        </>
+        <View style={{alignItems: "center"}}>
+          <Text style={{fontSize: 18, margin: 8}}>Repo not found</Text>
+        </View>
       );
     }
 

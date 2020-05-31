@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, StyleSheet, TextInput, Button, BackHandler} from 'react-native';
+import {Text, View, StyleSheet, TextInput, Button, BackHandler, Alert} from 'react-native';
 
 class SearchScreen extends React.Component {
 
@@ -47,7 +47,13 @@ class SearchScreen extends React.Component {
   }
 
   logout() {
-    this.props.navigation.navigate('Login');
+    Alert.alert('', 
+      'Are you sure you want to log out?', 
+      [{ 
+        text: 'No', onPress: () => console.log("Cancel Pressed")
+      }, {
+        text: 'Yes', onPress: () => this.props.navigation.navigate('Login')
+      }]);
   }
 
   render() {
