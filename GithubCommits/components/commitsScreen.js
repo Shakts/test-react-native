@@ -51,6 +51,7 @@ class CommitsScreen extends React.Component {
     }
 
     this.fetchData = this.fetchData.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   fetchData() {
@@ -81,7 +82,15 @@ class CommitsScreen extends React.Component {
   }
 
   componentDidMount() {
+    this.props.navigation.setOptions({
+      headerRight: () => (<Button title="Logout" onPress={this.logout}/>)
+    });
+
     this.fetchData();
+  }
+
+  logout() {
+    this.props.navigation.navigate('Login');
   }
 
   render() {

@@ -13,6 +13,7 @@ class SearchScreen extends React.Component {
     // bind functions
     this.inputRepoName = this.inputRepoName.bind(this);
     this.findRepo = this.findRepo.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   componentDidMount() {
@@ -20,6 +21,10 @@ class SearchScreen extends React.Component {
       'hardwareBackPress',
       this.handleBackButtonPressAndroid
     );
+
+    this.props.navigation.setOptions({
+      headerRight: () => (<Button title="Logout" onPress={this.logout}/>)
+    });
   }
 
   componentWillUnmount() {
@@ -39,6 +44,10 @@ class SearchScreen extends React.Component {
 
   findRepo() {
     this.props.navigation.navigate('Commits', {searchQuery: this.state.repoName});
+  }
+
+  logout() {
+    this.props.navigation.navigate('Login');
   }
 
   render() {
