@@ -32,9 +32,13 @@ class MainScreen extends React.Component {
       <View style = {styles.emptyView}>
         <View style = {styles.emptyView}></View>
         <View style = {styles.loginForm}>
-          <Text style={styles.formText}>Login</Text>
-          <TextInput placeholder="Username" style={styles.usernameForm} onChangeText={text => this.inputUsername(text)}></TextInput>
-          <Button title="submit" style={styles.submitButton} onPress={this.submitUsername}/>
+          <View style = {styles.topView}>
+            <Text style={styles.formText}>Email Address</Text>
+          </View>
+          <View style = {styles.bottomView}>
+            <TextInput placeholder="e.g: person@mail.com" style={styles.usernameForm} onChangeText={text => this.inputUsername(text)}></TextInput>
+            <Button title="submit" style={styles.submitButton} onPress={this.submitUsername}/>
+          </View>
         </View>
         <View style = {styles.emptyView}></View>
       </View>
@@ -47,28 +51,39 @@ const styles = StyleSheet.create({
     flex:1
   },
   loginForm: {
-    backgroundColor: '#b1e8f0',
+    borderWidth: 2,
+    borderColor: '#000000',
     flex: 3,
     flexDirection: 'column',
-    justifyContent: 'space-around',
     alignItems: 'stretch',
-    padding: 32,
     margin: 16,
     borderRadius: 16
+  },
+  topView : {
+    backgroundColor: '#2296f3',
+    justifyContent: "center",
+    flex:1
+  },
+  bottomView : {
+    flex: 2,
+    padding: 16, 
+    justifyContent: "space-around"
+    
   },
   formText : {
     alignSelf: 'center', 
     fontSize: 32,
+    color: '#ffffff'
   },
   usernameForm: {
     marginLeft: 10,
     marginRight: 10,
-    fontSize: 24, 
-    backgroundColor: '#dbdbdb'
+    fontSize: 24
   },
   submitButton: {
     marginLeft: 10,
-    marginRight: 10
+    marginRight: 10,
+    fontSize: 14
   }
 });
 

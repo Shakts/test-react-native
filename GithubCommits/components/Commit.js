@@ -8,8 +8,8 @@ class Commit extends React.Component {
         <View style={styles.topView}>
           <Image style={styles.avatarImage} source={{uri: this.props.commitItem.avatarUrl}}/>
           <View style={{marginLeft:16}}>
-            <Text style={{fontSize: 24}}>{this.props.commitItem.username}</Text>
-            <Text>{this.props.commitItem.commitDate}</Text>
+            <Text style={{fontSize: 24, color: '#ffffff'}}>{this.props.commitItem.username}</Text>
+            <Text style={{color: '#ffffff'}}>{this.props.commitItem.commitDate}</Text>
           </View>
         </View>
         <View style={{padding: 16}}>
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   },
   topView : {
     flexDirection: "row",
-    backgroundColor: '#f07b07',
+    backgroundColor: '#2296f3',
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5, 
     padding: 8
