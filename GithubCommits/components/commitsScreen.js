@@ -77,7 +77,7 @@ class CommitsScreen extends React.Component {
 
     if (this.state.repoFound) {
       displayedView = (
-        <View >
+        <View style={{alignItems: "center"}}>
           <Text>Commits on : {this.props.route.params.searchQuery}</Text>
           <FlatList
             data={this.state.commitData}
