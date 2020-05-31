@@ -24,10 +24,10 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import MainScreen from './components/mainScreen';
-import PasswordScreen from './components/passwordScreen';
-import SearchScreen from './components/searchScreen';
-import CommitsScreen from './components/commitsScreen';
+import MainScreen from './components/MainScreen';
+import PasswordScreen from './components/PasswordScreen';
+import SearchScreen from './components/SearchScreen';
+import CommitsScreen from './components/CommitsScreen';
 
 class App extends React.Component {
   render() {
