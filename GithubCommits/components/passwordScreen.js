@@ -1,24 +1,25 @@
 import React from 'react';
 import {Text, View, StyleSheet, TextInput, Button} from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-class MainScreen extends React.Component {
+class PasswordScreen extends React.Component {
   
   constructor() {
     super();
     this.state = {
-      userName: ''
+      passWord: ''
     };
-    this.submitUsername = this.submitUsername.bind(this);
-    this.inputUsername = this.inputUsername.bind(this);
+
+    // bind this to functions
+    this.inputPassword = this.inputPassword.bind(this);
+    this.submitPassword = this.submitPassword.bind(this);
   }
 
-  inputUsername(e) {
-    this.setState({userName: e.target.value});
+  inputPassword(e) {
+    this.setState({passWord: e.target.value});
   }
 
-  submitUsername() {
-    //ToDo : Perfom input validation, then load password form page
+  submitPassword() {
+    //ToDo : perform input validation, then load search page
   }
 
   render() {
@@ -27,8 +28,8 @@ class MainScreen extends React.Component {
         <View style = {styles.emptyView}></View>
         <View style = {styles.loginForm}>
           <Text style={styles.formText}>Login</Text>
-          <TextInput placeholder="Username" style={styles.usernameForm} onChange={this.inputUsername}></TextInput>
-          <Button title="submit" style={styles.submitButton} onPress={this.submitUsername}/>
+          <TextInput placeholder="Password" style={styles.usernameForm} onChange={this.inputPassword} secureTextEntry={true}></TextInput>
+          <Button title="submit" style={styles.submitButton} onPress={this.submitPassword}/>
         </View>
         <View style = {styles.emptyView}></View>
       </View>
@@ -66,4 +67,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default MainScreen;
+export default PasswordScreen;

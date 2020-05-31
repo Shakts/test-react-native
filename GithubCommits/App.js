@@ -25,11 +25,13 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import MainScreen from './components/mainScreen';
+import PasswordScreen from './components/passwordScreen';
 
 class App extends React.Component {
   render() {
     return (
-      <MainScreen/>
+      // <MainScreen/>
+      <PasswordScreen />
     );
   }
 };
