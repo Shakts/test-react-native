@@ -78,13 +78,13 @@ class CommitsScreen extends React.Component {
     if (this.state.repoFound) {
       displayedView = (
         <View style={{alignItems: "center"}}>
-          <Text>Commits on : {this.props.route.params.searchQuery}</Text>
+          <Text style={{fontSize: 18, margin: 8}}>Commits on : {this.props.route.params.searchQuery}</Text>
           <FlatList
             data={this.state.commitData}
             renderItem={({item}) => <Commit commitItem={item}/>}
             keyExtractor={item => item.id}
             onEndReached={this.fetchData}
-            onEndReachedThreshold={0}
+            onEndReachedThreshold={2}
             ListFooterComponent={this.renderFooter}
             />
         </View>
