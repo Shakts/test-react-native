@@ -28,10 +28,10 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import MainScreen from './components/MainScreen';
-import PasswordScreen from './components/PasswordScreen';
-import SearchScreen from './components/SearchScreen';
-import CommitsScreen from './components/CommitsScreen';
+import MainScreen from './components/mainScreen';
+import PasswordScreen from './components/passwordScreen';
+import SearchScreen from './components/searchScreen';
+import CommitsScreen from './components/commitsScreen';
 
 const Stack = createStackNavigator();
 
