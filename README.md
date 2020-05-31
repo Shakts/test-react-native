@@ -1,6 +1,6 @@
 # Installation Guide
 
-This app is using React Navigation library (https://reactnavigation.org) the handle the navigation. Before running the app, you will need to perform these steps :
+This app is using the React Navigation library (https://reactnavigation.org) to handle navigations. Before running the app, you will need to perform these steps :
 1. After checking out the master branch, cd to GithubCommits directory
 2. Run the following commands in order :
 ```sh
