@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, StyleSheet, TextInput, Button} from 'react-native';
+import {Text, View, StyleSheet, TextInput, Button, Alert} from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 class MainScreen extends React.Component {
@@ -18,8 +18,13 @@ class MainScreen extends React.Component {
   }
 
   submitUsername() {
-    //ToDo : Perfom input validation, then load password form page
-    this.props.navigation.navigate('Password');
+    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (reg.test(this.state.userName) === false) {
+      Alert.alert('', 'Email is invalid', [{ text: 'OK', onPress: () => console.log('OK Pressed') }]);
+    }
+    else {
+      this.props.navigation.navigate('Password');
+    }
   }
 
   render() {
@@ -43,7 +48,7 @@ const styles = StyleSheet.create({
   },
   loginForm: {
     backgroundColor: '#b1e8f0',
-    flex: 2,
+    flex: 3,
     flexDirection: 'column',
     justifyContent: 'space-around',
     alignItems: 'stretch',

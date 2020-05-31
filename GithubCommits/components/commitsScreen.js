@@ -25,7 +25,6 @@ class CommitsScreen extends React.Component {
         return response.json();
       })
       .then(jsonResponse => {
-        console.log(jsonResponse[0]);
         let fetchedCommits = jsonResponse.map(currentCommit => ({
           id: currentCommit.node_id,
           avatarUrl: currentCommit.author.avatar_url,
