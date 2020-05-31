@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, StyleSheet, TextInput, Button} from 'react-native';
+import {Text, View, StyleSheet, TextInput, Button, BackHandler} from 'react-native';
 
 class SearchScreen extends React.Component {
 
@@ -15,12 +15,29 @@ class SearchScreen extends React.Component {
     this.findRepo = this.findRepo.bind(this);
   }
 
+  componentDidMount() {
+    BackHandler.addEventListener(
+      'hardwareBackPress',
+      this.handleBackButtonPressAndroid
+    );
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener(
+      'hardwareBackPress',
+      this.handleBackButtonPressAndroid
+    );
+  }
+
+  handleBackButtonPressAndroid() {
+    return true;
+  }
+
   inputRepoName(e) {
     this.setState({repoName: e.target.value});
   }
 
   findRepo() {
-    // ToDo : Pass repo name to commitsScreen
     this.props.navigation.navigate('Commits', {searchQuery: this.state.repoName});
   }
 

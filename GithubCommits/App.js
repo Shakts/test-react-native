@@ -42,7 +42,9 @@ class App extends React.Component {
         <Stack.Navigator>
           <Stack.Screen name="Login" component={MainScreen} />
           <Stack.Screen name="Password" component={PasswordScreen} />
-          <Stack.Screen name="Search" component={SearchScreen} />
+          <Stack.Screen name="Search" component={SearchScreen} options={{
+            headerLeft: () => null
+          }} />
           <Stack.Screen name="Commits" component={CommitsScreen} />
         </Stack.Navigator>
         {/* <MainScreen/>
